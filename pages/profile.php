@@ -254,8 +254,8 @@ require_once __DIR__ . '/../db_connection.php';
     </div>
 </div>
 
-<<<<<<< HEAD
-<div class="profile-details">
+
+<!-- <div class="profile-details">
     <?php
         // Assuming a logged-in user with ID 1 for demonstration purposes
         // In a real application, this would come from a session or authentication system
@@ -280,37 +280,9 @@ require_once __DIR__ . '/../db_connection.php';
         }
         $stmt->close();
     ?>
-</div>
+</div> -->
 
-<?php include 'footer.php'; ?>
 
-<div id="editModal" class="modal-overlay">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeEditModal()">✕</span>
-        <h2 class="modal-title">Edit Profile</h2>
-        <p class="modal-subtitle">UPDATE YOUR PERSONAL DETAILS</p>
-
-        <form action="" method="POST">
-            <div class="input-group">
-                <label>FULL NAME</label>
-                <input type="text" value="Amir Ibrahim">
-            </div>
-
-            <div class="input-group">
-                <label>EMAIL ADDRESS</label>
-                <input type="email" value="amir.ibrahim@history.com">
-            </div>
-
-            <div class="input-group">
-                <label>PHONE NUMBER</label>
-                <input type="text" value="+20 123 456 7890">
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-full">Save Changes</button>
-            <button type="button" class="btn btn-cancel btn-full" onclick="closeEditModal()">Cancel</button>
-        </form>
-    </div>
-</div>
 
 <script>
     function openEditModal() {
