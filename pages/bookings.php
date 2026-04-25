@@ -72,7 +72,7 @@ require_once __DIR__ . '/../db_connection.php';
                 if (empty($displayImage)) {
                     $displayImage = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkYpYnuUyzt8VtrMTXhsdsu9CEKDLhk0CfnA&s'; // Your network placeholder
                 }
-                echo '    <img src="' . htmlspecialchars($displayImage) . '" alt="' . htmlspecialchars($booking['trip_title']) . '">';
+                echo '    <img src="' . htmlspecialchars($displayImage) . '" alt="' . htmlspecialchars($booking['trip_title']) . '" onerror="this.onerror=null;this.src=\'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkYpYnuUyzt8VtrMTXhsdsu9CEKDLhk0CfnA&s\';">';
                 echo '    <div class="booking-details">';
                 echo '        <h3>' . htmlspecialchars($booking['trip_title']) . '</h3>';
                 echo '        <p><strong>Location:</strong> ' . htmlspecialchars($booking['location_name']) . '</p>';
