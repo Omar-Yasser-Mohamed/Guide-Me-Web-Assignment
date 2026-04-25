@@ -29,14 +29,9 @@
         padding: 40px 20px;
     }
 
-    .profile-header {
-        margin-bottom: 30px;
-    }
+    .profile-header { margin-bottom: 30px; }
 
-    .avatar-wrapper {
-        position: relative;
-        display: inline-block;
-    }
+    .avatar-wrapper { position: relative; display: inline-block; }
 
     .avatar-img {
         width: 120px;
@@ -75,7 +70,6 @@
         margin: 5px 0 30px;
     }
 
-    
     .info-card {
         background-color: var(--card-bg);
         border-radius: 15px;
@@ -115,7 +109,6 @@
         color: #A0A0A0;
     }
 
-    
     .actions {
         display: flex;
         gap: 15px;
@@ -133,21 +126,12 @@
         align-items: center;
         gap: 8px;
         text-decoration: none;
-    }
-
-    .btn-primary {
-        background-color: var(--accent-yellow);
         border: none;
-        color: var(--text-dark);
     }
 
-    .btn-outline {
-        background: transparent;
-        border: 1px solid var(--accent-yellow);
-        color: var(--text-dark);
-    }
+    .btn-primary { background-color: var(--accent-yellow); color: var(--text-dark); }
+    .btn-outline { background: transparent; border: 1px solid var(--accent-yellow); color: var(--text-dark); }
 
-    
     .secondary-cards {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -164,31 +148,61 @@
         box-shadow: 0 4px 15px rgba(0,0,0,0.02);
     }
 
-    .icon-box {
-        background: var(--card-bg);
-        width: 40px;
-        height: 40px;
-        border-radius: 8px;
-        display: flex;
+    /* --- Modal CSS --- */
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(26, 26, 26, 0.6);
         align-items: center;
         justify-content: center;
+        backdrop-filter: blur(2px);
     }
 
-    .card-content h4 {
-        margin: 0;
-        font-size: 14px;
+    .modal-content {
+        background-color: var(--white);
+        padding: 35px;
+        border-radius: 24px;
+        width: 90%;
+        max-width: 420px;
+        position: relative;
+        text-align: left;
     }
 
-    .card-content p {
-        margin: 5px 0 0;
-        font-size: 11px;
+    .close-btn {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        font-size: 20px;
+        cursor: pointer;
         color: var(--text-muted);
-        line-height: 1.4;
     }
+
+    .modal-title { font-family: 'Playfair Display', serif; font-size: 26px; margin: 0; }
+    .modal-subtitle { font-size: 10px; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 25px; }
+
+    .input-group { margin-bottom: 20px; }
+    .input-group label { display: block; font-size: 10px; font-weight: 700; color: #B5A895; margin-bottom: 8px; }
+    .input-group input {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        box-sizing: border-box;
+        font-family: inherit;
+        font-weight: 500;
+    }
+
+    .btn-full { width: 100%; justify-content: center; margin-top: 10px; }
+    .btn-cancel { background: transparent; border: 1px solid #eee; color: var(--text-muted); margin-top: 5px; }
 </style>
 
 <div class="profile-container">
-    
     <div class="profile-header">
         <div class="avatar-wrapper">
             <img src="../assets/images/Amir.png" alt="Amir Ibrahim" class="avatar-img">
@@ -204,13 +218,11 @@
             <span class="info-value">amir.ibrahim@history.com</span>
             <span class="info-icon">✉</span>
         </div>
-        
         <div class="info-group">
             <span class="info-label">Phone Number</span>
             <span class="info-value">+20 123 456 7890</span>
             <span class="info-icon">📞</span>
         </div>
-
         <div class="info-group">
             <span class="info-label">Preferred Language</span>
             <span class="info-value">English (UK) & Arabic</span>
@@ -219,7 +231,7 @@
     </div>
 
     <div class="actions">
-        <button class="btn btn-primary">✎ Edit Profile</button>
+        <button class="btn btn-primary" onclick="openEditModal()">✎ Edit Profile</button>
         <button class="btn btn-outline">🔄 Change Password</button>
     </div>
 
@@ -239,7 +251,51 @@
             </div>
         </div>
     </div>
-
 </div>
+
+<div id="editModal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeEditModal()">✕</span>
+        <h2 class="modal-title">Edit Profile</h2>
+        <p class="modal-subtitle">UPDATE YOUR PERSONAL DETAILS</p>
+
+        <form action="" method="POST">
+            <div class="input-group">
+                <label>FULL NAME</label>
+                <input type="text" value="Amir Ibrahim">
+            </div>
+
+            <div class="input-group">
+                <label>EMAIL ADDRESS</label>
+                <input type="email" value="amir.ibrahim@history.com">
+            </div>
+
+            <div class="input-group">
+                <label>PHONE NUMBER</label>
+                <input type="text" value="+20 123 456 7890">
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full">Save Changes</button>
+            <button type="button" class="btn btn-cancel btn-full" onclick="closeEditModal()">Cancel</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openEditModal() {
+        document.getElementById('editModal').style.display = 'flex';
+    }
+
+    function closeEditModal() {
+        document.getElementById('editModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        let modal = document.getElementById('editModal');
+        if (event.target == modal) {
+            closeEditModal();
+        }
+    }
+</script>
 
 <?php include 'footer.php'; ?>
