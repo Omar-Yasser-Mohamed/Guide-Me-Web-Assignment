@@ -283,7 +283,7 @@ require_once __DIR__ . '/../db_connection.php';
 </div>
 
 <?php include 'footer.php'; ?>
-=======
+
 <div id="editModal" class="modal-overlay">
     <div class="modal-content">
         <span class="close-btn" onclick="closeEditModal()">✕</span>
@@ -330,4 +330,4 @@ require_once __DIR__ . '/../db_connection.php';
 </script>
 
 <?php include 'footer.php'; ?>
->>>>>>> 7e2836b1ff1ebfee0092ecc9b1ed145f4fa58c52
+
