@@ -1,0 +1,420 @@
+/* Trip Details Page Styles */
+.trip-details-container {
+    width: 100%;
+    background: #FFF8F1;
+}
+
+/* Hero Section */
+.trip-hero {
+    position: relative;
+    height: 35vh;
+    min-height: 280px;
+    max-height: 450px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: 60px;
+    color: #fff;
+}
+
+.trip-hero-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.trip-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.4) 100%);
+    z-index: 2;
+}
+
+.trip-hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 900px;
+}
+
+.trip-hero-subtitle {
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: #f2d26d;
+    font-weight: 500;
+}
+
+.trip-hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Content Layout */
+.trip-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 60px;
+    padding: 60px 40px; /* Added 40px side padding */
+    max-width: 1300px;
+    margin: 0 auto;
+    background: #FFF8F1;
+}
+
+/* Left Column */
+.trip-main-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #1a1a1a;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.trip-description {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 60px;
+}
+
+/* Experience Blueprint */
+.blueprint-section {
+    background: #FFF2DC;
+    padding: 60px;
+    border-radius: 32px;
+    margin-bottom: 60px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.02);
+}
+
+.blueprint-header {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #a0a0a0;
+    margin-bottom: 50px;
+    display: block;
+    font-weight: 500;
+}
+
+.blueprint-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px 60px;
+}
+
+.blueprint-item {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.blueprint-icon {
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+.blueprint-item h4 {
+    margin: 0 0 12px 0;
+    font-size: 1.3rem;
+    color: #1a1a1a;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+}
+
+.blueprint-item p {
+    margin: 0;
+    font-size: 1.05rem;
+    color: #777;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* Arrival Section */
+.arrival-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.arrival-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.location-tag {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #666;
+    font-size: 1rem;
+}
+
+/* Right Column - Booking Sidebar */
+.booking-sidebar {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+}
+
+.booking-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 32px;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+}
+
+.booking-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    margin: 0 0 12px 0;
+    color: #1a1a1a;
+}
+
+.booking-card p {
+    color: #888;
+    font-size: 0.95rem;
+    margin-bottom: 35px;
+}
+
+.form-group {
+    margin-bottom: 28px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #1a1a1a;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 18px 24px;
+    background: #f7f1e6;
+    border: none;
+    border-radius: 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #333;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.price-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 35px 0 25px 0;
+    padding-top: 30px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.price-label {
+    font-size: 1.05rem;
+    color: #666;
+}
+
+.price-amount {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #c9a33d;
+    font-family: 'Inter', sans-serif;
+}
+
+.btn-book {
+    width: 100%;
+    padding: 20px;
+    background: #f2d26d;
+    border: none;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #1a1a1a;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-book:hover {
+    background: #e6c15c;
+    transform: scale(1.02);
+}
+
+.cancellation-note {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+    .trip-content-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        padding: 60px 40px;
+    }
+    
+    .booking-sidebar {
+        position: static;
+    }
+    
+    .trip-hero {
+        padding: 40px;
+        height: 60vh;
+    }
+}
+
+@media (max-width: 600px) {
+    .blueprint-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .trip-hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .trip-content-grid {
+        padding: 40px 20px;
+    }
+    
+    .blueprint-section {
+        padding: 30px 20px;
+    }
+}
+
+/* Modal Styling */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 34, 53, 0.4);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal-card {
+    background: #fdfaf3;
+    padding: 60px 40px;
+    border-radius: 32px;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 30px 100px rgba(0,0,0,0.15);
+}
+
+.modal-icon {
+    width: 80px;
+    height: 80px;
+    background: #ffe082;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 30px auto;
+}
+
+.modal-title {
+    font-family: "Playfair Display", serif;
+    font-size: 2.2rem;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+}
+
+.modal-text {
+    color: #666;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn-modal-primary {
+    background: #f2d26d;
+    color: #1a1a1a;
+    padding: 18px;
+    border-radius: 15px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+    display: block;
+}
+
+.btn-modal-primary:hover {
+    background: #e6c15c;
+    transform: scale(1.02);
+}
+
+.btn-modal-secondary {
+    background: transparent;
+    border: 1px solid #ddd;
+    color: #666;
+    padding: 18px;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-modal-secondary:hover {
+    background: #f5f5f5;
+}
+
+@media (max-width: 500px) {
+    .modal-card {
+        padding: 40px 24px;
+        border-radius: 24px;
+    }
+    
+    .modal-title {
+        font-size: 1.8rem;
+    }
+    
+    .modal-text {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+    
+    .modal-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 20px;
+    }
+    
+    .modal-icon svg {
+        width: 30px;
+        height: 30px;
+    }
+}

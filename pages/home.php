@@ -23,18 +23,24 @@ require_once __DIR__ . '/../db_connection.php';
 
     <div class="journeys">
         <?php
-            // Fetch trips from the database
-            $sql = "SELECT title, description, image, base_price, logistics_price FROM trips WHERE status = 'active' LIMIT 3";
+            // Fetch trips with location names and IDs
+            $sql = "SELECT t.id, t.title, t.description, t.image, t.base_price, t.logistics_price, l.name as location_name 
+                    FROM trips t 
+                    LEFT JOIN locations l ON t.location_id = l.id
+                    WHERE t.status = 'active' 
+                    LIMIT 3";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
                 while($trip = $result->fetch_assoc()) {
+                    $id = $trip['id'];
                     $title = $trip['title'];
                     $image = $trip['image'];
-                    $tag = 'ACTIVE'; // Placeholder, you might want to derive this from database
-                    $price = $trip['base_price'] + $trip['logistics_price']; // Calculate total price
+                    $tag = 'FEATURED'; 
+                    $price = $trip['base_price'] + $trip['logistics_price'];
                     $description = $trip['description'];
-                    include 'components/journey-card.php';
+                    $location = $trip['location_name'];
+                    include 'components/home-card.php';
                 }
             } else {
                 echo "<p>No iconic journeys found at the moment.</p>";
