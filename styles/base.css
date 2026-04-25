@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    background: #444;
+    font-family: 'Inter', Arial, sans-serif;
+    overflow-y: scroll;
+}
+
+.main-bg {
+    background: #fff8ee;
+    min-height: 100vh;
+}
+
+#main-content {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
