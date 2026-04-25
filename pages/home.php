@@ -1,4 +1,5 @@
-<?php 
+<?php
+require_once __DIR__ . '/../db_connection.php';
     $pageTitle = "Home";
     include 'header.php'; 
 ?>
@@ -21,38 +22,22 @@
     </div>
 
     <div class="journeys">
-        <?php 
-            $trips = [
-                [
-                    'title' => 'Valley of the Kings Private Tour',
-                    'image' => 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=600&q=80',
-                    'tag' => 'PRIVATE',
-                    'price' => '150',
-                    'description' => 'Uncover the hidden chambers and secrets of the 18th to 20th dynasties with an expert Egyptologist.'
-                ],
-                [
-                    'title' => 'Karnak & Luxor Temple Twilight',
-                    'image' => 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80',
-                    'tag' => 'SUNSET',
-                    'price' => '120',
-                    'description' => 'Witness the grandeur of Thebes under the stars, exploring the world\'s largest religious complex.'
-                ],
-                [
-                    'title' => 'Aswan Felucca Private Expedition',
-                    'image' => 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=600&q=80',
-                    'tag' => 'EXCLUSIVE',
-                    'price' => '185',
-                    'description' => 'A serene passage through Elephantine Island aboard a traditional wooden sailboat.'
-                ]
-            ];
+        <?php
+            // Fetch trips from the database
+            $sql = "SELECT title, description, image, base_price, logistics_price FROM trips WHERE status = 'active' LIMIT 3";
+            $result = $conn->query($sql);
 
-            foreach ($trips as $trip) {
-                $title = $trip['title'];
-                $image = $trip['image'];
-                $tag = $trip['tag'];
-                $price = $trip['price'];
-                $description = $trip['description'];
-                include 'components/journey-card.php';
+            if ($result->num_rows > 0) {
+                while($trip = $result->fetch_assoc()) {
+                    $title = $trip['title'];
+                    $image = $trip['image'];
+                    $tag = 'ACTIVE'; // Placeholder, you might want to derive this from database
+                    $price = $trip['base_price'] + $trip['logistics_price']; // Calculate total price
+                    $description = $trip['description'];
+                    include 'components/journey-card.php';
+                }
+            } else {
+                echo "<p>No iconic journeys found at the moment.</p>";
             }
         ?>
     </div>
