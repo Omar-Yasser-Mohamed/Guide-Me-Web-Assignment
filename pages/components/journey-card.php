@@ -20,7 +20,7 @@ require_once __DIR__ . '/../../db_connection.php';
             $displayImage = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkYpYnuUyzt8VtrMTXhsdsu9CEKDLhk0CfnA&s'; // Your network placeholder
         }
         ?>
-        <img src="<?php echo $displayImage; ?>" alt="<?php echo $title; ?>">
+        <img src="<?php echo htmlspecialchars($displayImage); ?>" alt="<?php echo htmlspecialchars($title); ?>" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkYpYnuUyzt8VtrMTXhsdsu9CEKDLhk0CfnA&s';">
         <span class="tag"><?php echo $tag; ?></span>
     </div>
     <div class="journey-card-content">
