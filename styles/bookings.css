@@ -1,0 +1,227 @@
+/* bookings.css */
+.bookings-page {
+    background-color: #fdf8f1;
+    min-height: 100vh;
+    padding: 60px 5%; /* Responsive horizontal padding */
+    font-family: 'Inter', sans-serif;
+}
+
+.bookings-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.travel-journal-label {
+    font-size: 0.75rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0; /* Completely removed space */
+    display: block;
+}
+
+.bookings-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    color: #1a1a1a;
+    margin-top: 0; /* Remove default top margin */
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.title-underline {
+    width: 60px;
+    height: 4px;
+    background-color: #f2d26d;
+    margin-bottom: 50px;
+}
+
+.bookings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+.booking-card {
+    background: #fff;
+    border-radius: 12px;
+    display: flex;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.booking-card:hover {
+    transform: scale(1.02);
+}
+
+.booking-card-image {
+    width: 300px;
+    min-width: 300px;
+    height: 200px;
+}
+
+.booking-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.booking-card-content {
+    padding: 24px 32px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.booking-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.booking-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #1a1a1a;
+    margin: 0 0 12px 0;
+}
+
+.status-badge {
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.status-pending { background-color: #fef3c7; color: #d97706; }
+.status-confirmed, .status-accepted { background-color: #d1fae5; color: #059669; }
+.status-cancelled, .status-rejected { background-color: #fee2e2; color: #dc2626; }
+
+.booking-info-row {
+    display: flex;
+    gap: 20px;
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.info-icon {
+    width: 16px;
+    height: 16px;
+    color: #666;
+}
+
+.investment-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.investment-label {
+    font-size: 0.7rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.investment-amount {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.view-details-link {
+    color: #0d2235;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.get-ticket-link {
+    color: #0d2235;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.unavailable-text {
+    color: #dc2626;
+    font-size: 0.8rem;
+    font-style: italic;
+}
+
+.curator-note {
+    background-color: #fff9e6;
+    border: 1px dashed #f2d26d;
+    padding: 32px;
+    border-radius: 12px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-top: 40px;
+}
+
+.curator-icon-circle {
+    background-color: #f2d26d;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.curator-content h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: #1a1a1a;
+    margin: 0 0 12px 0;
+}
+
+.curator-content p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+@media (max-width: 800px) {
+    .booking-card {
+        flex-direction: column;
+    }
+    .booking-card-image {
+        width: 100%;
+        height: 250px;
+    }
+    .bookings-page {
+        padding: 40px 4%; /* Slightly tighter on mobile */
+    }
+}
+
+@media (min-width: 1400px) {
+    .bookings-page {
+        padding: 80px 10%; /* More breathing room on wide screens */
+    }
+}

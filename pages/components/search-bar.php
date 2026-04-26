@@ -1,3 +1,6 @@
+<?php
+require_once __DIR__ . '/../../db_connection.php';
+?>
 <form class="search-bar" method="get" action="#">
     <div>
         <label>DESTINATION</label>

@@ -1,3 +1,6 @@
+<?php
+require_once __DIR__ . '/../db_connection.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +15,7 @@
     <link rel="stylesheet" href="../styles/cards.css">
     <link rel="stylesheet" href="../styles/sections.css">
     <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/trips.css">
 </head>
 <body>
     <div class="main-bg">
@@ -22,7 +26,7 @@
             <div class="logo">GUID ME</div>
             <nav id="main-nav">
                 <a href="home.php" class="nav-link <?php echo $currentFile == 'home.php' ? 'active' : ''; ?>" data-link>Home</a>
-                <a href="trips.php" class="nav-link <?php echo $currentFile == 'trips.php' ? 'active' : ''; ?>" data-link>Trips</a>
+                <a href="trips.php" class="nav-link <?php echo ($currentFile == 'trips.php' || $currentFile == 'trip-details.php') ? 'active' : ''; ?>" data-link>Trips</a>
                 <a href="bookings.php" class="nav-link <?php echo $currentFile == 'bookings.php' ? 'active' : ''; ?>" data-link>My Bookings</a>
                 <a href="profile.php" class="nav-link <?php echo $currentFile == 'profile.php' ? 'active' : ''; ?>" data-link>Profile</a>
             </nav>

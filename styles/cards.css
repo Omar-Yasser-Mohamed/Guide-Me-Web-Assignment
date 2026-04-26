@@ -1,11 +1,14 @@
 .journeys {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 32px;
     margin-bottom: 48px;
 }
 
-.journey-card {
+/* =========================================
+   TRIP CARD STYLES (Trips Page)
+   ========================================= */
+.trip-card {
     background: #fff;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
@@ -15,70 +18,198 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.journey-card:hover {
-    transform: translateY(-8px);
+.trip-card:hover {
+    transform: scale(1.02);
     box-shadow: 0 15px 40px rgba(0,0,0,0.1);
 }
 
-.journey-card img {
+.trip-card img {
     width: 100%;
-    height: 180px;
+    height: 280px; /* Minimized height as requested */
     object-fit: cover;
 }
 
-.journey-card .tag {
+.rating-tag {
     position: absolute;
-    top: 16px;
-    right: 16px;
-    background: #0d2235;
-    color: #ffe082;
-    font-size: 0.8rem;
-    font-weight: 600;
-    border-radius: 6px;
-    padding: 4px 12px;
+    top: 24px;
+    right: 24px;
+    background: #fdfdfd;
+    color: #1a1a1a;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-radius: 30px;
+    padding: 8px 18px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 10;
 }
 
-.journey-card-content {
-    padding: 18px 18px 12px 18px;
+.rating-tag::before {
+    content: '★';
+    color: #f2d26d;
+    font-size: 1rem;
+}
+
+.trip-card-content {
+    padding: 24px 20px;
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
-.journey-card-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin: 0 0 6px 0;
-}
-
-.journey-card-desc {
-    color: #444;
-    font-size: 0.97rem;
-    margin-bottom: 12px;
-}
-
-.journey-card-price {
-    color: #ffe082;
-    font-size: 1.1rem;
-    font-weight: 700;
-}
-
-.journey-card-per {
+.trip-location {
+    font-size: 0.8rem;
     color: #888;
-    font-size: 0.85rem;
-    margin-left: 6px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
 }
 
-.journey-card-footer {
+.trip-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin: 0 0 16px 0;
+    color: #1a1a1a;
+    line-height: 1.1;
+}
+
+.trip-card-desc {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 24px;
+    line-height: 1.5;
+    font-family: 'Inter', sans-serif;
+}
+
+.trip-card-footer {
     margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.trip-card-price {
+    color: #f2d26d;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.explore-link {
+    color: #1a1a1a;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 4px;
+    font-family: 'Inter', sans-serif;
+    margin-left: auto; 
+    transition: color 0.3s ease;
+}
+
+.explore-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #f2d26d;
+    transition: background-color 0.3s ease;
+}
+
+.explore-link:hover::after {
+    background-color: #1a1a1a;
+}
+
+/* =========================================
+   HOME CARD STYLES (Home Page)
+   ========================================= */
+.home-card {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.04);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.home-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+
+.home-card img {
+    width: 100%;
+    height: 300px; /* Minimized height */
+    object-fit: cover;
+}
+
+.home-card .tag {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #0d2235; /* Slate-blue as in image */
+    color: #f2d26d; /* Gold text as in image */
+    padding: 6px 16px;
+    border-radius: 30px; /* Pill shape */
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.home-card-content {
+    padding: 24px;
+    flex: 1;
+}
+
+.home-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+    color: #1a1a1a;
+}
+
+.home-card-desc {
+    color: #666;
+    margin-bottom: 24px;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+.home-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 20px;
+}
+
+.home-card-price {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.home-card-per {
+    font-size: 0.75rem;
+    color: #999;
+    letter-spacing: 1px;
 }
 
 @media (max-width: 1100px) {
-    .journeys { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+    .journeys { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
 }
 
 @media (max-width: 800px) {
     .journeys { grid-template-columns: 1fr; justify-items: center; }
-    .journey-card { width: 100%; max-width: 450px; }
+    .trip-card, .home-card { width: 100%; max-width: 400px; }
 }
