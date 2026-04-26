@@ -53,6 +53,11 @@ require_once __DIR__ . '/../db_connection.php';
                             // Update URL
                             history.pushState(null, null, url);
 
+                            // Call initFilters if trips.php was loaded
+                            if (url.includes('trips.php') && typeof window.initFilters === 'function') {
+                                window.initFilters();
+                            }
+
                             // Fade back in
                             mainContent.style.opacity = '1';
                             mainContent.style.transform = 'translateY(0)';

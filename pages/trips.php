@@ -196,7 +196,7 @@ require_once __DIR__ . '/../db_connection.php';
         initFilters();
     });
 
-    function initFilters() {
+    window.initFilters = function() {
         // Dynamic Budget Slider Update
         const slider = document.getElementById('budget-slider');
         const display = document.getElementById('price-display');
@@ -214,13 +214,24 @@ require_once __DIR__ . '/../db_connection.php';
                 const trigger = customSelect.querySelector('.select-trigger');
                 const options = customSelect.querySelectorAll('.option');
                 const input = document.getElementById('destination-input');
+                const display = document.getElementById('selected-destination'); // Get the display element directly
+
+                // Initialize display and active option based on current input value
+                const currentDestination = input.value;
+                display.textContent = currentDestination; // Update display text
+                options.forEach(opt => {
+                    opt.classList.remove('active'); // Remove active from all first
+                    if (opt.getAttribute('data-value') === currentDestination) {
+                        opt.classList.add('active'); // Add active to the matching option
+                    }
+                });
 
                 // Remove existing listeners to prevent duplicates
                 const newTrigger = trigger.cloneNode(true);
                 trigger.parentNode.replaceChild(newTrigger, trigger);
                 
                 // Important: Find the display element within the NEW trigger
-                const display = newTrigger.querySelector('#selected-destination');
+                const newDisplay = newTrigger.querySelector('#selected-destination'); // Re-get display from new trigger
 
                 newTrigger.addEventListener('click', (e) => {
                     e.stopPropagation();
@@ -231,7 +242,7 @@ require_once __DIR__ . '/../db_connection.php';
                     opt.addEventListener('click', (e) => {
                         e.stopPropagation();
                         const val = opt.getAttribute('data-value');
-                        display.textContent = val;
+                        newDisplay.textContent = val; // Use newDisplay
                         input.value = val;
                         
                         options.forEach(o => o.classList.remove('active'));
