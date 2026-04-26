@@ -2,7 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-include 'db_connection.php';
+ require_once __DIR__ . '/../db_connection.php'; 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user_id = 1; 
@@ -15,12 +15,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = mysqli_query($conn, $check_email);
 
     if (mysqli_num_rows($result) > 0) {
-        die("خطأ: الإيميل ده مستخدم قبل كدة من يوزر تاني، جربي إيميل تاني يا هندسة.");
+        echo "Error: This email is already in use by another account.";
     } else {
         $sql = "UPDATE users SET name='$name', email='$email', phone='$phone' WHERE id='$user_id'";
 
         if (mysqli_query($conn, $sql)) {
-            header("Location: profile.php");
+            header("Location: profile.php?msg=Profile updated successfully");
             exit();
         } else {
             echo "Error updating record: " . mysqli_error($conn);

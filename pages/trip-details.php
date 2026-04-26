@@ -145,31 +145,4 @@ include 'header.php';
     </div>
 </div>
 
-<?php if (isset($_GET['success'])): ?>
-<!-- Success Modal -->
-<div class="modal-overlay" id="success-modal">
-    <div class="modal-card">
-        <div class="modal-icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-        </div>
-        <h2 class="modal-title">Booking Confirmed!</h2>
-        <p class="modal-text">Your request has been sent successfully.<br>Please wait for guide approval.</p>
-        
-        <div class="modal-actions">
-            <a href="bookings.php" class="btn-modal-primary">View My Bookings</a>
-            <button onclick="closeModal()" class="btn-modal-secondary">Close</button>
-        </div>
-    </div>
-</div>
-
-<script>
-    function closeModal() {
-        const modal = document.getElementById('success-modal');
-        modal.style.display = 'none';
-        // Clean URL
-        window.history.replaceState({}, document.title, window.location.pathname + window.location.search.replace(/[?&]success=1/, ''));
-    }
-</script>
-<?php endif; ?>
-
 <?php include 'footer.php'; ?>

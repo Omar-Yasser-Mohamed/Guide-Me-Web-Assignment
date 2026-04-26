@@ -35,11 +35,10 @@ require_once __DIR__ . '/../db_connection.php';
                     <input type="hidden" name="destination" id="destination-input" value="<?php echo (!empty($_GET['destination'])) ? htmlspecialchars($_GET['destination']) : 'All Sacred Sites'; ?>">
                 </div>
             </div>
-
             <div class="filter-group">
                 <div class="filter-header">
                     <span class="filter-label">Max Budget</span>
-                    <span class="price-pill" id="price-display">$<?php echo isset($_GET['budget']) ? number_format($_GET['budget']) : '5,000'; ?></span>
+                    <span class="price-pill" id="price-display">$<?php echo isset($_GET['budget']) ? number_format($_GET['budget']) : '500'; ?></span>
                 </div>
                 <div class="range-container">
                     <input type="range" name="budget" class="range-slider" id="budget-slider" min="50" max="1000" step="10" value="<?php echo isset($_GET['budget']) ? htmlspecialchars($_GET['budget']) : '500'; ?>">
@@ -148,7 +147,6 @@ require_once __DIR__ . '/../db_connection.php';
             ?>
         </div>
 
-        <!-- Pagination -->
         <div class="pagination">
             <?php
                 $totalPages = ceil($totalCount / $itemsPerPage);
@@ -163,7 +161,7 @@ require_once __DIR__ . '/../db_connection.php';
                 if ($totalPages > 1):
                     // Previous Arrow
                     if ($currentPage > 1) {
-                        echo '<a href="' . getPageUrl($currentPage - 1) . '" class="page-arrow">&lsaquo;</a>';
+                        echo '<a href="' . getPageUrl($currentPage - 1) . '" class="page-arrow" data-link>&lsaquo;</a>';
                     } else {
                         echo '<a href="#" class="page-arrow disabled" style="opacity: 0.5; pointer-events: none;">&lsaquo;</a>';
                     }
@@ -171,12 +169,12 @@ require_once __DIR__ . '/../db_connection.php';
                     // Page Numbers
                     for ($p = 1; $p <= $totalPages; $p++) {
                         $active = ($p == $currentPage) ? 'active' : '';
-                        echo '<a href="' . getPageUrl($p) . '" class="page-num ' . $active . '">' . sprintf("%02d", $p) . '</a>';
+                        echo '<a href="' . getPageUrl($p) . '" class="page-num ' . $active . '" data-link>' . sprintf("%02d", $p) . '</a>';
                     }
 
                     // Next Arrow
                     if ($currentPage < $totalPages) {
-                        echo '<a href="' . getPageUrl($currentPage + 1) . '" class="page-arrow">&rsaquo;</a>';
+                        echo '<a href="' . getPageUrl($currentPage + 1) . '" class="page-arrow" data-link>&rsaquo;</a>';
                     } else {
                         echo '<a href="#" class="page-arrow disabled" style="opacity: 0.5; pointer-events: none;">&rsaquo;</a>';
                     }
@@ -187,15 +185,6 @@ require_once __DIR__ . '/../db_connection.php';
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        initFilters();
-    });
-
-    // Re-initialize for AJAX or back-button state
-    window.addEventListener('pageshow', function(event) {
-        initFilters();
-    });
-
     window.initFilters = function() {
         // Dynamic Budget Slider Update
         const slider = document.getElementById('budget-slider');
@@ -214,15 +203,15 @@ require_once __DIR__ . '/../db_connection.php';
                 const trigger = customSelect.querySelector('.select-trigger');
                 const options = customSelect.querySelectorAll('.option');
                 const input = document.getElementById('destination-input');
-                const display = document.getElementById('selected-destination'); // Get the display element directly
+                const display = document.getElementById('selected-destination');
 
                 // Initialize display and active option based on current input value
                 const currentDestination = input.value;
-                display.textContent = currentDestination; // Update display text
+                display.textContent = currentDestination;
                 options.forEach(opt => {
-                    opt.classList.remove('active'); // Remove active from all first
+                    opt.classList.remove('active');
                     if (opt.getAttribute('data-value') === currentDestination) {
-                        opt.classList.add('active'); // Add active to the matching option
+                        opt.classList.add('active');
                     }
                 });
 
@@ -230,8 +219,7 @@ require_once __DIR__ . '/../db_connection.php';
                 const newTrigger = trigger.cloneNode(true);
                 trigger.parentNode.replaceChild(newTrigger, trigger);
                 
-                // Important: Find the display element within the NEW trigger
-                const newDisplay = newTrigger.querySelector('#selected-destination'); // Re-get display from new trigger
+                const newDisplay = newTrigger.querySelector('#selected-destination');
 
                 newTrigger.addEventListener('click', (e) => {
                     e.stopPropagation();
@@ -242,7 +230,7 @@ require_once __DIR__ . '/../db_connection.php';
                     opt.addEventListener('click', (e) => {
                         e.stopPropagation();
                         const val = opt.getAttribute('data-value');
-                        newDisplay.textContent = val; // Use newDisplay
+                        newDisplay.textContent = val;
                         input.value = val;
                         
                         options.forEach(o => o.classList.remove('active'));
@@ -279,6 +267,9 @@ require_once __DIR__ . '/../db_connection.php';
             };
         }
     }
+
+    // Call it immediately since this script executes on load/navigation
+    initFilters();
 </script>
 
 <?php include 'footer.php'; ?>

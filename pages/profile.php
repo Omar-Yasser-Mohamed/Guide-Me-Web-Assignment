@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    include 'db_connection.php'; 
+    require_once __DIR__ . '/../db_connection.php'; 
 
     $user_id = 1; 
     $query = "SELECT * FROM users WHERE id = '$user_id'";
@@ -75,7 +75,7 @@
 
     <div class="actions">
         <button class="btn btn-primary" onclick="openEditModal()">⚙️ Edit Profile</button>
-        <button class="btn btn-outline">🔒 Change Password</button>
+        <button class="btn btn-outline" onclick="openPasswordModal()">🔒 Change Password</button>
     </div>
 </div>
 
@@ -106,11 +106,43 @@
     </div>
 </div>
 
+<div id="passwordModal" class="modal-overlay">
+    <div class="modal-content">
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 26px; margin: 0;">🔒 Change Password</h2>
+        <p style="font-size: 10px; color: #666; letter-spacing: 1px; margin-bottom: 25px;">SECURE YOUR ACCOUNT</p>
+
+        <form action="change_password.php" method="POST">
+            <div class="input-group">
+                <label>🔑 CURRENT PASSWORD</label>
+                <input type="password" name="current_password" required>
+            </div>
+
+            <div class="input-group">
+                <label>🆕 NEW PASSWORD</label>
+                <input type="password" name="new_password" required>
+            </div>
+
+            <div class="input-group">
+                <label>✅ CONFIRM NEW PASSWORD</label>
+                <input type="password" name="confirm_password" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full">🛡️ Update Password</button>
+            <button type="button" class="btn btn-outline btn-full" onclick="closePasswordModal()">❌ Cancel</button>
+        </form>
+    </div>
+</div>
+
 <script>
     function openEditModal() { document.getElementById('editModal').style.display = 'flex'; }
     function closeEditModal() { document.getElementById('editModal').style.display = 'none'; }
+    
+    function openPasswordModal() { document.getElementById('passwordModal').style.display = 'flex'; }
+    function closePasswordModal() { document.getElementById('passwordModal').style.display = 'none'; }
+
     window.onclick = function(event) {
         if (event.target == document.getElementById('editModal')) closeEditModal();
+        if (event.target == document.getElementById('passwordModal')) closePasswordModal();
     }
 </script>
 

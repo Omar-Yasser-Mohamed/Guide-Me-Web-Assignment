@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 require_once 'db_connection.php';
 
 // Check if booking_date column exists
@@ -10,4 +10,4 @@ if ($result->num_rows == 0) {
 } else {
     echo "booking_date column already exists.\n";
 }
-?>
+?> -->
