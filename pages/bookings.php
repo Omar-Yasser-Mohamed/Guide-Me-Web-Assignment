@@ -12,42 +12,7 @@ require_once __DIR__ . '/../db_connection.php';
         <div class="title-underline"></div>
         
         <div class="bookings-list">
-            <!-- Sample Card for UI Demonstration -->
-            <div class="booking-card">
-                <div class="booking-card-image">
-                    <img src="https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&q=80&w=600" alt="Sample Trip">
-                </div>
-                <div class="booking-card-content">
-                    <div class="booking-header">
-                        <h3 class="booking-card-title">Private Sunset Tour: Giza Plateau</h3>
-                        <span class="status-badge status-pending">PENDING</span>
-                    </div>
-                    
-                    <div class="booking-info-row">
-                        <div class="info-item">
-                            <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                            <span>Oct 24, 2024</span>
-                        </div>
-                        <div class="info-item">
-                            <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                            <span>2 Persons</span>
-                        </div>
-                    </div>
-                    
-                    <div class="investment-section">
-                        <div>
-                            <div class="investment-label">Total Investment</div>
-                            <div class="investment-amount">$450.00</div>
-                        </div>
-                        
-                        <a href="#" class="view-details-link">
-                            View Details 
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
+     
             <?php
                 $tourist_id = 1; 
                 $statusFilter = isset($_GET['status']) ? $_GET['status'] : 'all';
@@ -59,7 +24,7 @@ require_once __DIR__ . '/../db_connection.php';
                             b.status AS booking_status,
                             t.title AS trip_title, 
                             t.image AS trip_image,
-                            t.date AS trip_date,
+                            COALESCE(b.booking_date, t.date) AS trip_date,
                             l.name AS location_name
                         FROM bookings b
                         JOIN trips t ON b.trip_id = t.id
@@ -70,7 +35,7 @@ require_once __DIR__ . '/../db_connection.php';
                     $sql .= " AND b.status = ?";
                 }
                 
-                $sql .= " ORDER BY b.created_at DESC";
+                $sql .= " ORDER BY trip_date DESC, b.created_at DESC";
                 
                 $stmt = $conn->prepare($sql);
                 if ($statusFilter !== 'all') {

@@ -23,10 +23,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Calculate total price
         $total_price = ($trip['base_price'] + $trip['logistics_price']) * $people_count;
         
+        $booking_date = isset($_POST['booking_date']) ? $_POST['booking_date'] : date('Y-m-d');
+        
         // Insert booking
-        $insertSql = "INSERT INTO bookings (trip_id, tourist_id, people_count, total_price, status) VALUES (?, ?, ?, ?, 'pending')";
+        $insertSql = "INSERT INTO bookings (trip_id, tourist_id, people_count, total_price, status, booking_date) VALUES (?, ?, ?, ?, 'pending', ?)";
         $insertStmt = $conn->prepare($insertSql);
-        $insertStmt->bind_param("iiid", $trip_id, $tourist_id, $people_count, $total_price);
+        $insertStmt->bind_param("iiids", $trip_id, $tourist_id, $people_count, $total_price, $booking_date);
         
         if ($insertStmt->execute()) {
             // Success - redirect back to trip details with success flag
