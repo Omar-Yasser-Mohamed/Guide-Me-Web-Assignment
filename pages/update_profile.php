@@ -15,7 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = mysqli_query($conn, $check_email);
 
     if (mysqli_num_rows($result) > 0) {
-        echo "Error: This email is already in use by another account.";
+        echo "خطأ: الإيميل ده مستخدم قبل كدة من يوزر تاني، جربي إيميل تاني يا هندسة.";
+               
     } else {
         $sql = "UPDATE users SET name='$name', email='$email', phone='$phone' WHERE id='$user_id'";
 
