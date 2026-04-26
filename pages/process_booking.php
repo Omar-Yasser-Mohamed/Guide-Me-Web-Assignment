@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $booking_date = isset($_POST['booking_date']) ? $_POST['booking_date'] : date('Y-m-d');
         
         // Insert booking
-        $insertSql = "INSERT INTO bookings (trip_id, tourist_id, people_count, total_price, status, booking_date) VALUES (?, ?, ?, ?, 'pending', ?)";
+        $insertSql = "INSERT INTO bookings (trip_id, tourist_id, people_count, total_price, status, created_at) VALUES (?, ?, ?, ?, 'pending', ?)";
         $insertStmt = $conn->prepare($insertSql);
         $insertStmt->bind_param("iiids", $trip_id, $tourist_id, $people_count, $total_price, $booking_date);
         

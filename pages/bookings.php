@@ -24,7 +24,7 @@ require_once __DIR__ . '/../db_connection.php';
                             b.status AS booking_status,
                             t.title AS trip_title, 
                             t.image AS trip_image,
-                            COALESCE(b.booking_date, t.date) AS trip_date,
+                            COALESCE(b.created_at, t.date) AS trip_date,
                             l.name AS location_name
                         FROM bookings b
                         JOIN trips t ON b.trip_id = t.id
