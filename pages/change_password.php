@@ -12,7 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $confirm = mysqli_real_escape_string($conn, $_POST['confirm_password']);
 
     if ($new !== $confirm) {
-        echo "Error: New passwords do not match.";
+        $msg = "Error: New passwords do not match.";
+        if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest') {
+            echo json_encode(['status' => 'error', 'message' => $msg]);
+            exit();
+        }
+        echo $msg;
         exit();
     }
 
@@ -22,10 +27,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sql = "UPDATE users SET password='$new' WHERE id='$user_id'";
 
     if (mysqli_query($conn, $sql)) {
+        if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest') {
+            echo json_encode(['status' => 'success', 'message' => 'Password updated successfully']);
+            exit();
+        }
         header("Location: profile.php?msg=Password updated successfully");
         exit();
     } else {
-        echo "Error updating password: " . mysqli_error($conn);
+        $error = mysqli_error($conn);
+        if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest') {
+            echo json_encode(['status' => 'error', 'message' => "Error updating password: $error"]);
+            exit();
+        }
+        echo "Error updating password: " . $error;
     }
 }
 ?>

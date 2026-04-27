@@ -27,7 +27,7 @@
         <div class="member-since">
             📅 MEMBER SINCE <?php echo date('Y', strtotime($user_data['created_at'])); ?>
         </div>
-        <h1 class="user-name"> <?php echo $user_data['name']; ?></h1>
+        <h1 class="user-name" id="display-name"> <?php echo $user_data['name']; ?></h1>
     </div>
 
     <div class="info-card">
@@ -35,7 +35,7 @@
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <div>
                     <span class="info-label">Email Address</span>
-                    <span class="info-value"><?php echo $user_data['email']; ?></span>
+                    <span class="info-value" id="display-email"><?php echo $user_data['email']; ?></span>
                 </div>
                 <span style="font-size: 20px;">✉️</span>
             </div>
@@ -45,7 +45,7 @@
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <div>
                     <span class="info-label">Phone Number</span>
-                    <span class="info-value"><?php echo $user_data['phone']; ?></span>
+                    <span class="info-value" id="display-phone"><?php echo $user_data['phone']; ?></span>
                 </div>
                 <span style="font-size: 20px;">📞</span>
             </div>
@@ -84,7 +84,7 @@
         <h2 style="font-family: 'Playfair Display', serif; font-size: 26px; margin: 0;">📝 Edit Profile</h2>
         <p style="font-size: 10px; color: #666; letter-spacing: 1px; margin-bottom: 25px;">UPDATE YOUR PERSONAL DETAILS</p>
 
-        <form action="update_profile.php" method="POST">
+        <form id="editProfileForm" action="update_profile.php" method="POST" data-no-ajax>
             <div class="input-group">
                 <label>👤 FULL NAME</label>
                 <input type="text" name="name" value="<?php echo $user_data['name']; ?>" required>
@@ -111,7 +111,7 @@
         <h2 style="font-family: 'Playfair Display', serif; font-size: 26px; margin: 0;">🔒 Change Password</h2>
         <p style="font-size: 10px; color: #666; letter-spacing: 1px; margin-bottom: 25px;">SECURE YOUR ACCOUNT</p>
 
-        <form action="change_password.php" method="POST">
+        <form id="changePasswordForm" action="change_password.php" method="POST" data-no-ajax>
             <div class="input-group">
                 <label>🔑 CURRENT PASSWORD</label>
                 <input type="password" name="current_password" required>
@@ -133,18 +133,7 @@
     </div>
 </div>
 
-<script>
-    function openEditModal() { document.getElementById('editModal').style.display = 'flex'; }
-    function closeEditModal() { document.getElementById('editModal').style.display = 'none'; }
-    
-    function openPasswordModal() { document.getElementById('passwordModal').style.display = 'flex'; }
-    function closePasswordModal() { document.getElementById('passwordModal').style.display = 'none'; }
-
-    window.onclick = function(event) {
-        if (event.target == document.getElementById('editModal')) closeEditModal();
-        if (event.target == document.getElementById('passwordModal')) closePasswordModal();
-    }
-</script>
+<script src="../js/profile.js"></script>
 
 <?php include 'footer.php'; ?>
 

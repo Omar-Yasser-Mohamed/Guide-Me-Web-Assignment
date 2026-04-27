@@ -51,7 +51,7 @@ require_once __DIR__ . '/../db_connection.php';
 
 <div class="curation-section">
     <div class="curation-img">
-        <img src="https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=800&q=80" alt="Egyptian Museum Artifact">
+        <img src="../assets/images/Egypt Museum.png" alt="Egyptian Museum Artifact">
     </div>
     <div class="curation-content">
         <div class="section-subtitle" style="margin-bottom: 8px;">THE GUID ME STANDARD</div>

@@ -77,6 +77,12 @@
         padding-bottom: 10px;
     }
 
+    .info-group:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
     .info-label {
         font-size: 10px;
         color: #B5A895;
