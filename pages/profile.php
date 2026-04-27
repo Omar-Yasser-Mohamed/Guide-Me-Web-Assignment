@@ -15,8 +15,7 @@
     include 'header.php'; 
 ?>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles/profile.css">
+
 
 <div class="profile-container">
     <div class="profile-header">
@@ -51,7 +50,7 @@
             </div>
         </div>
 
-        <div class="info-group">
+        <div id="account-status-group" class="info-group">
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <div>
                     <span class="info-label">Account Status</span>

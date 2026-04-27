@@ -3,7 +3,7 @@ require_once __DIR__ . '/../db_connection.php';
     $pageTitle = "My Bookings";
     include 'header.php'; 
 ?>
-<link rel="stylesheet" href="../styles/bookings.css">
+
 
 <div class="bookings-page">
     <div class="bookings-container">
